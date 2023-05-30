@@ -82,11 +82,33 @@ class RegistrationPage:
         return self
 
     def click_submit(self):
-        self.browser.element('#submit').perform(command.js.click)
+        # self.browser.element('#submit').perform(command.js.click)
+        self.browser.element('[id="submit"]').perform(command.js.scroll_into_view)
+        self.browser.element('[id="submit"]').press_enter()
 
     def should_registered_user_with(self, *args):
-
         self.browser.element('.table').all('td').even.should(
             have.exact_texts(args)
         )
         return self
+
+    def assert_user_data(self, full_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture, address,
+                         state_and_city):
+        self.browser.all('tbody tr').should(have.exact_texts(full_name,
+                                                             email,
+                                                             gender,
+                                                             mobile,
+                                                             date_of_birth,
+                                                             subjects,
+                                                             hobbies,
+                                                             picture,
+                                                             address,
+                                                             state_and_city))
+        return self
+
+    # def should_registered_user_with(self, *args):
+
+    # self.browser.element('.table').all('td').even.should(
+    #   have.exact_texts(args)
+    # )
+    # return self

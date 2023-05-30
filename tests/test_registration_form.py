@@ -13,7 +13,7 @@ def test_successful(setup_browser):
         registration_page.fill_first_name('Helen').fill_last_name('Morilova')
         registration_page.fill_email('test@test.ru')
         registration_page.fill_gender('Female')
-        registration_page.fill_phone('5555555555')
+        registration_page.fill_phone('123456789')
 
     with allure.step("fill_date_of_birth"):
         registration_page.fill_date_of_birth('1984', 'May', '12')
@@ -38,11 +38,11 @@ def test_successful(setup_browser):
             'Helen Morilova',
             'test@test.ru',
             'Female',
-            '5555555555',
+            '123456789',
             '12 May,1984',
             'Arts',
             'Sports',
-            'pic.png',
+            '404-img.png',
             'adress street, 1',
             'NCR Delhi',
         )
