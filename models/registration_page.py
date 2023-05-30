@@ -11,7 +11,7 @@ class RegistrationPage:
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
         self.phone = browser.element('#userNumber')
-        self.state = browser.element('#state #react-select-1-input')
+        self.state = browser.element('#state')
         self.subject = browser.element('#subjectsInput')
         self.adress = browser.element('#currentAddress')
         self.city = browser.element('#city')
@@ -74,6 +74,9 @@ class RegistrationPage:
         return self
 
     def fill_state(self, name):
+        #self.browser.element("footer").execute_script('element.remove()')
+        self.browser.execute_script('document.querySelector("#fixedban").remove()')
+        self.browser.element('footer').execute_script('element.remove()')
         self.state.perform(command.js.scroll_into_view)
         self.state.click()
         self.browser.all('[id^=react-select][id*=option]').element_by(
