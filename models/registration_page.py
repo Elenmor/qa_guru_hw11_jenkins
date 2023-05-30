@@ -11,7 +11,7 @@ class RegistrationPage:
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
         self.phone = browser.element('#userNumber')
-        self.state = browser.element('#state')
+        self.state = browser.element('#state #react-select-1-input')
         self.subject = browser.element('#subjectsInput')
         self.adress = browser.element('#currentAddress')
         self.city = browser.element('#city')
@@ -92,18 +92,8 @@ class RegistrationPage:
         )
         return self
 
-    def assert_user_data(self, full_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture, address,
-                         state_and_city):
-        self.browser.all('tbody tr').should(have.exact_texts(full_name,
-                                                             email,
-                                                             gender,
-                                                             mobile,
-                                                             date_of_birth,
-                                                             subjects,
-                                                             hobbies,
-                                                             picture,
-                                                             address,
-                                                             state_and_city))
+    def assert_user_data(self, *args):
+        self.browser.all('tbody tr').should(have.exact_texts(*args))
         return self
 
     # def should_registered_user_with(self, *args):
